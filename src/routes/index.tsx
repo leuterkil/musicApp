@@ -55,7 +55,6 @@ export default component$(() => {
                 <MusicCard key={song.id} albumImage={song.album.images[0].url} 
                 songArtists={song.artists.map((artist:any)=>artist.name)}
                 songTitle={song.name} mp3Src={song.preview_url}></MusicCard>
-              
             )
           })}
           </div>
