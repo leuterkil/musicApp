@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { ArtistObjectSimplified } from "~/types/spotify";
+import type { ArtistObjectSimplified } from "~/types/spotify";
 import { Link } from '@builder.io/qwik-city';
 
 

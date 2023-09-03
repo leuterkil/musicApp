@@ -1,4 +1,4 @@
-import { ArtistsAlbumsResponse } from "~/types/spotify";
+import type { ArtistsAlbumsResponse } from "~/types/spotify";
 
 const apiUrl = "https://api.spotify.com"
 

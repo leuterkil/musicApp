@@ -1,5 +1,5 @@
-import {Signal, component$, useSignal} from '@builder.io/qwik'
-import { Loader, routeLoader$, useLocation} from '@builder.io/qwik-city'
+import {Signal, component$} from '@builder.io/qwik'
+import { Loader, routeLoader$} from '@builder.io/qwik-city'
 import AlbumCard from '~/components/searchSongComponents/AlbumCard';
 import MusicCard from '~/components/searchSongComponents/musicCard';
 import authenticate from '~/hooks/apis/authenticate';
@@ -7,7 +7,7 @@ import getArtist from '~/hooks/apis/getArtist';
 import getArtistAlbums from '~/hooks/apis/getArtistAlbums';
 import getArtistTopTracks from '~/hooks/apis/getArtistTopTracks';
 import useNumberShort from '~/hooks/numberShortenerHook';
-import { ArtistsAlbumsResponse, ArtistsTopTracksResponse, SingleArtistResponse } from '~/types/spotify';
+import type { ArtistsAlbumsResponse, ArtistsTopTracksResponse, SingleArtistResponse } from '~/types/spotify';
 
 export const useGetArtist:Loader<SingleArtistResponse> = routeLoader$(async (props)=>{
     const auth = await authenticate(props)

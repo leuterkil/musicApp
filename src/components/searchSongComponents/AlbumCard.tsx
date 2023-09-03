@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import styles from './albumCard.module.css'
-import { ImageObject } from "~/types/spotify";
+import type { ImageObject } from "~/types/spotify";
 import useDate from "~/hooks/dateHook";
 
 

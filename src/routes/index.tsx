@@ -4,7 +4,7 @@ import searchSong from "~/hooks/apis/searchSong";
 import { routeAction$ } from "@builder.io/qwik-city";
 import authenticate from "~/hooks/apis/authenticate";
 import MusicCard from "~/components/searchSongComponents/musicCard";
-import {TrackSearchResponse} from '~/types/spotify'
+import type {TrackSearchResponse} from '~/types/spotify'
 
 export const useSearchSong = routeAction$(async (props,req)=>{
   const auth = await authenticate(req)
@@ -16,7 +16,7 @@ export const useSearchSong = routeAction$(async (props,req)=>{
 export default component$(() => {
 
   const searchSongAction = useSearchSong()
-  const searchTimeout:Signal<NodeJS.Timeout | null> = useSignal(null);
+  const searchTimeout:Signal<any> = useSignal(null);
   const songs:Signal<TrackSearchResponse | null> = useSignal(null);
 
   const handleSearchSongs = $(async (event:any)=>{
@@ -24,7 +24,6 @@ export default component$(() => {
     {
       window.clearTimeout(searchTimeout.value);
     }
-    console.log(event.target.value.length)
 
     searchTimeout.value = setTimeout(async ()=>{
       if(event.target.value.length===0){

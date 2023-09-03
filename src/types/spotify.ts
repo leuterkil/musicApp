@@ -495,14 +495,6 @@
     export interface CheckUserSavedAlbumsResponse extends Array<boolean> {}
 
     /**
-     * Get user's saved shows
-     *
-     * GET /v1/me/shows
-     * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-saved-shows
-     */
-    type UsersSavedShowsResponse = PagingObject<SavedShowObject>;
-
-    /**
      * Save Shows for Current User
      *
      * PUT /v1/me/shows
@@ -525,14 +517,6 @@
      * https://developer.spotify.com/documentation/web-api/reference/#/operations/check-users-saved-shows
      */
     export interface CheckUserSavedShowsResponse extends Array<boolean> {}
-
-    /**
-     * Get User's Saved Episodes
-     *
-     * GET /v1/me/episodes
-     * https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-saved-episodes
-     */
-    type UsersSavedEpisodesResponse = PagingObject<SavedEpisodeObject>;
 
     /**
      * Save Episodes for Current User
@@ -702,15 +686,6 @@
             Partial<PlaylistSearchResponse>,
             Partial<ShowSearchResponse>,
             Partial<EpisodeSearchResponse> {}
-
-    /**
-     * Get an Show
-     *
-     * GET /v1/shows/{id}
-     * https://developer.spotify.com/web-api/get-show/
-     */
-    type SingleShowResponse = ShowObject;
-
     /**
      * Get Several Shows
      *
@@ -720,22 +695,6 @@
     export interface MultipleShowsResponse {
         shows: ShowObjectSimplified[];
     }
-
-    /**
-     * Get an Shows’s Episodes
-     *
-     * GET /v1/shows/{id}/episodes
-     * https://developer.spotify.com/documentation/web-api/reference/shows/get-shows-episodes/
-     */
-    type ShowEpisodesResponse = PagingObject<EpisodeObjectSimplified>;
-
-    /**
-     * Get an Episode
-     *
-     * GET /v1/episodes/{id}
-     * https://developer.spotify.com/documentation/web-api/reference/episodes/get-an-episode/
-     */
-    type SingleEpisodeResponse = EpisodeObject;
 
     /**
      * Get Several Episodes
