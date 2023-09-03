@@ -4,6 +4,7 @@ import searchSong from "~/hooks/apis/searchSong";
 import { routeAction$ } from "@builder.io/qwik-city";
 import authenticate from "~/hooks/apis/authenticate";
 import MusicCard from "~/components/searchSongComponents/musicCard";
+import {TrackSearchResponse} from '~/types/spotify'
 
 export const useSearchSong = routeAction$(async (props,req)=>{
   const auth = await authenticate(req)
@@ -15,11 +16,11 @@ export const useSearchSong = routeAction$(async (props,req)=>{
 export default component$(() => {
 
   const searchSongAction = useSearchSong()
-  const searchTimeout:Signal<any> = useSignal(null);
-  const songs:Signal<any> = useSignal([]);
+  const searchTimeout:Signal<NodeJS.Timeout | null> = useSignal(null);
+  const songs:Signal<TrackSearchResponse | null> = useSignal(null);
 
   const handleSearchSongs = $(async (event:any)=>{
-    if(searchTimeout)
+    if(searchTimeout.value)
     {
       window.clearTimeout(searchTimeout.value);
     }
@@ -27,14 +28,12 @@ export default component$(() => {
 
     searchTimeout.value = setTimeout(async ()=>{
       if(event.target.value.length===0){
-        songs.value = []; 
+        songs.value = null; 
       }
       else {
-        const {value} = await searchSongAction.submit({searchTerm:event.target.value})
-        console.log(value)
-        songs.value = []; 
+        const {value}:any = await searchSongAction.submit({searchTerm:event.target.value})
+        songs.value = null; 
         songs.value = value;
-        console.log(songs.value)
       }
 
     },1000)
@@ -49,11 +48,11 @@ export default component$(() => {
           type="text" 
           class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none text-black mb-2" />
         <div class="flex justify-around gap-y-8 flex-wrap">
-          {songs.value.tracks && songs.value.tracks.items.map((song:any)=>{
+          {songs.value && songs.value.tracks.items.map((song:any)=>{
             return(
               
                 <MusicCard key={song.id} albumImage={song.album.images[0].url} 
-                songArtists={song.artists.map((artist:any)=>artist.name)}
+                songArtists={song.artists}
                 songTitle={song.name} mp3Src={song.preview_url}></MusicCard>
             )
           })}
