@@ -1,0 +1,27 @@
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 24px;
+    margin: 16px 0;
+}
+
+.album-info {
+    padding: 16px;
+}
+
+.info-item {
+    font-size: 14px;
+    margin: 8px 0;
+}

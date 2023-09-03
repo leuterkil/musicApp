@@ -10,7 +10,7 @@ export default component$(() => {
   return (
     <footer>
       <div class="container">
-        <a href="https://www.builder.io/" target="_blank" class={styles.anchor}>
+        <a href="https://echarissopoulos.cf/" target="_blank" class={styles.anchor}>
           <span>Made with ❤ by Left4Dev</span>
           <span class={styles.spacer}>|</span>
           <span>{formatedDate}</span>
