@@ -24,7 +24,13 @@ Inside your project, you'll see the following directory structure:
 
 - `src/components/searchSongComponents`: Directory made for the project components.
 
+- `src/hooks` : Directory which contains hooks and api calls of the project
+
 - `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+
+## Start The Project
+
+In order to start the project just type `npm i` command to install the required modules provided in package.json. This project uses spotify API and a client_id and client_secret are required in order to run the project. Simply add a `.env.local` file to project's root and put `CLIENT_ID` and a `CLIENT_SECRET` 
 
 ## Add Integrations and deployment
 
