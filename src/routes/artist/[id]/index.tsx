@@ -1,5 +1,5 @@
 import {Signal, component$} from '@builder.io/qwik'
-import { Loader, routeLoader$} from '@builder.io/qwik-city'
+import { DocumentHead, Loader, routeLoader$} from '@builder.io/qwik-city'
 import AlbumCard from '~/components/searchSongComponents/AlbumCard';
 import MusicCard from '~/components/searchSongComponents/musicCard';
 import authenticate from '~/hooks/apis/authenticate';
@@ -57,6 +57,7 @@ export default component$(() => {
         {albums.value.items && albums.value.items.map(album=>(
           <div key={album.id} class="basis-2/12">
             <AlbumCard 
+            id={album.id}
             albumImage={album.images[0]} 
             albumTitle={album.name} 
             totalTracks={album.total_tracks}
@@ -68,3 +69,18 @@ export default component$(() => {
     </>
     )
 })
+
+export const head: DocumentHead = ({resolveValue})=>{
+
+  const artist = resolveValue(useGetArtist);
+
+  return{
+    title: artist.name,
+    meta: [
+      {
+        name: "description",
+        content: "Qwik site description",
+      },
+    ],
+  }
+};

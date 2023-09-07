@@ -47,12 +47,12 @@ export default component$(() => {
           type="text" 
           class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none text-black mb-2" />
         <div class="flex justify-around gap-y-8 flex-wrap">
-          {songs.value && songs.value.tracks.items.map((song:any)=>{
+          {songs.value && songs.value.tracks.items.map((song)=>{
             return(
               
                 <MusicCard key={song.id} albumImage={song.album.images[0].url} 
                 songArtists={song.artists}
-                songTitle={song.name} mp3Src={song.preview_url}></MusicCard>
+                songTitle={song.name} mp3Src={song.preview_url || ''}></MusicCard>
             )
           })}
           </div>
