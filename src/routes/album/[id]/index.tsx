@@ -39,7 +39,7 @@ export default component$(() => {
     )
 })
 
-export const head: DocumentHead = ({resolveValue,params})=>{
+export const head: DocumentHead = ({resolveValue})=>{
 
     const album = resolveValue(useGetAlbum);
 
